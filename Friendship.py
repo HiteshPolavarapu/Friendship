@@ -132,12 +132,11 @@ html_code = f"""
   <div class="emoji-row">👫 🤝 💛 🌈 🎊</div>
 
   <p class="msg">
-    Some people come into your life and just make it better, brighter, and a lot more fun.
-    You're one of them. Thank you for every laugh, every late night talk, and every time you showed up when it mattered.
+    Happy Friendship Day to one of the most important person in my life. No matter how busy life gets or how far apart we are, our friendship will always stay special. Thank you for every laugh, every conversation, and every memory. Here's to many more years of friendship.
   </p>
 
   <div class="quote">
-    "A true friend is one of life's greatest blessings."
+    "Having a friend like you is one of the greatest blessings in my life."
   </div>
 
   <p class="msg">
