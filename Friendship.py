@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Happy Friendship Day", page_icon="🎉", layout="centered")
 
-FRIEND_NAME = "Your Friend's Name"  # change this before deploying
+FRIEND_NAME = "Meghuu"  # change this before deploying
 
 html_code = f"""
 <!DOCTYPE html>
