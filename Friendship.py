@@ -166,7 +166,7 @@ html_code = f"""
     Wishing you a Friendship Day filled with laughter, good memories, and the same warmth you always bring to my life.
   </p>
 
-  <div class="signature">With love, {FRIEND_NAME.split()[0] if False else "your friend"} 💛</div>
+  <div class="signature">With love, {FRIEND_NAME.split()[0] if False else "Hithuu"} 💛</div>
 </div>
 
 <script>
