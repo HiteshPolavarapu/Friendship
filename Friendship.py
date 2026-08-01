@@ -7,11 +7,16 @@ FRIEND_NAME = "Meghuu"  # change this before deploying
 
 html_code = f"""
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+  * {{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }}
 
   body {{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,9 +26,10 @@ html_code = f"""
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 620px;
+    min-height: 100vh;   /* full viewport height */
     overflow: hidden;
     position: relative;
+    padding: 20px;
   }}
 
   @keyframes gradientShift {{
@@ -35,12 +41,14 @@ html_code = f"""
   .card {{
     background: rgba(255, 255, 255, 0.9);
     border-radius: 24px;
-    padding: 45px 35px;
+    padding: 2.5rem 2rem;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     max-width: 560px;
+    width: 100%;
     z-index: 2;
     animation: popIn 1s ease-out;
+    margin: auto;
   }}
 
   @keyframes popIn {{
@@ -58,13 +66,14 @@ html_code = f"""
   }}
 
   h1 {{
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
     background: linear-gradient(90deg, #ff5f6d, #ffc371, #47cf73, #4facfe, #a44bf5);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: colorShift 4s linear infinite;
     margin-bottom: 16px;
+    line-height: 1.2;
   }}
 
   @keyframes colorShift {{
@@ -73,7 +82,7 @@ html_code = f"""
   }}
 
   .emoji-row {{
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
     margin: 5px 0 22px;
     animation: bounce 2s infinite;
   }}
@@ -84,7 +93,7 @@ html_code = f"""
   }}
 
   p.msg {{
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
     color: #444;
     line-height: 1.7;
     margin-bottom: 16px;
@@ -92,7 +101,7 @@ html_code = f"""
 
   .quote {{
     font-style: italic;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     color: #a44bf5;
     border-left: 4px solid #ff5f6d;
     padding-left: 12px;
@@ -102,11 +111,12 @@ html_code = f"""
 
   .signature {{
     margin-top: 22px;
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 700;
     color: #ff5f6d;
   }}
 
+  /* ── Confetti ── */
   .confetti {{
     position: fixed;
     top: -10px;
@@ -120,7 +130,20 @@ html_code = f"""
   }}
 
   @keyframes fall {{
-    to {{ transform: translateY(650px) rotate(360deg); opacity: 0.3; }}
+    to {{ transform: translateY(110vh) rotate(720deg); opacity: 0.2; }}
+  }}
+
+  /* ── Responsive tweaks ── */
+  @media (max-width: 480px) {{
+    .card {{
+      padding: 1.8rem 1.2rem;
+    }}
+    .ribbon {{
+      font-size: 0.7rem;
+    }}
+    .quote {{
+      padding-left: 8px;
+    }}
   }}
 </style>
 </head>
@@ -149,13 +172,15 @@ html_code = f"""
 <script>
   function launchConfetti() {{
     const colors = ['#ff5f6d', '#ffc371', '#47cf73', '#4facfe', '#a44bf5', '#ff9a9e'];
-    for (let i = 0; i < 50; i++) {{
+    const count = Math.min(50, Math.floor(window.innerWidth / 12)); // more on wider screens
+    for (let i = 0; i < count; i++) {{
       const conf = document.createElement('div');
       conf.className = 'confetti';
       conf.style.left = Math.random() * 100 + 'vw';
       conf.style.background = colors[Math.floor(Math.random() * colors.length)];
       conf.style.animationDuration = (2 + Math.random() * 3) + 's';
-      conf.style.width = conf.style.height = (6 + Math.random() * 8) + 'px';
+      const size = 6 + Math.random() * 8;
+      conf.style.width = conf.style.height = size + 'px';
       document.body.appendChild(conf);
       setTimeout(() => conf.remove(), 5000);
     }}
@@ -170,4 +195,5 @@ html_code = f"""
 </html>
 """
 
-components.html(html_code, height=650, scrolling=False)
+# Use a larger height and allow scrolling if needed (though content fits most screens)
+components.html(html_code, height=800, scrolling=True)
