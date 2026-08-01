@@ -3,22 +3,20 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Happy Friendship Day", page_icon="🎉", layout="centered")
 
-FRIEND_NAME = "Meghuu"  # change this before deploying
-
-html_code = f"""
+html_code = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  * {{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }}
+  }
 
-  body {{
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb, #ffdde1);
     background-size: 400% 400%;
@@ -26,19 +24,19 @@ html_code = f"""
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;   /* full viewport height */
+    min-height: 100vh;
     overflow: hidden;
     position: relative;
     padding: 20px;
-  }}
+  }
 
-  @keyframes gradientShift {{
-    0% {{ background-position: 0% 50%; }}
-    50% {{ background-position: 100% 50%; }}
-    100% {{ background-position: 0% 50%; }}
-  }}
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-  .card {{
+  .card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 24px;
     padding: 2.5rem 2rem;
@@ -49,23 +47,23 @@ html_code = f"""
     z-index: 2;
     animation: popIn 1s ease-out;
     margin: auto;
-  }}
+  }
 
-  @keyframes popIn {{
-    0% {{ transform: scale(0.7); opacity: 0; }}
-    100% {{ transform: scale(1); opacity: 1; }}
-  }}
+  @keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
 
-  .ribbon {{
+  .ribbon {
     font-size: 0.85rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #a44bf5;
     font-weight: 700;
     margin-bottom: 8px;
-  }}
+  }
 
-  h1 {{
+  h1 {
     font-size: clamp(1.8rem, 5vw, 2.6rem);
     background: linear-gradient(90deg, #ff5f6d, #ffc371, #47cf73, #4facfe, #a44bf5);
     background-size: 300% 300%;
@@ -74,32 +72,33 @@ html_code = f"""
     animation: colorShift 4s linear infinite;
     margin-bottom: 16px;
     line-height: 1.2;
-  }}
+  }
 
-  @keyframes colorShift {{
-    0% {{ background-position: 0% 50%; }}
-    100% {{ background-position: 300% 50%; }}
-  }}
+  @keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
 
-  .emoji-row {{
+  .emoji-row {
     font-size: clamp(1.6rem, 4vw, 2.4rem);
     margin: 5px 0 22px;
     animation: bounce 2s infinite;
-  }}
+  }
 
-  @keyframes bounce {{
-    0%, 100% {{ transform: translateY(0); }}
-    50% {{ transform: translateY(-10px); }}
-  }}
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
 
-  p.msg {{
+  p.msg {
     font-size: clamp(0.95rem, 2.2vw, 1.1rem);
     color: #444;
     line-height: 1.7;
     margin-bottom: 16px;
-  }}
+    text-align: left;
+  }
 
-  .quote {{
+  .quote {
     font-style: italic;
     font-size: clamp(0.9rem, 2vw, 1rem);
     color: #a44bf5;
@@ -107,17 +106,16 @@ html_code = f"""
     padding-left: 12px;
     margin: 20px 0;
     text-align: left;
-  }}
+  }
 
-  .signature {{
+  .signature {
     margin-top: 22px;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 700;
     color: #ff5f6d;
-  }}
+  }
 
-  /* ── Confetti ── */
-  .confetti {{
+  .confetti {
     position: fixed;
     top: -10px;
     width: 10px;
@@ -127,53 +125,55 @@ html_code = f"""
     animation-name: fall;
     animation-timing-function: linear;
     z-index: 1;
-  }}
+  }
 
-  @keyframes fall {{
-    to {{ transform: translateY(110vh) rotate(720deg); opacity: 0.2; }}
-  }}
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+  }
 
-  /* ── Responsive tweaks ── */
-  @media (max-width: 480px) {{
-    .card {{
+  @media (max-width: 480px) {
+    .card {
       padding: 1.8rem 1.2rem;
-    }}
-    .ribbon {{
+    }
+    .ribbon {
       font-size: 0.7rem;
-    }}
-    .quote {{
+    }
+    .quote {
       padding-left: 8px;
-    }}
-  }}
+    }
+  }
 </style>
 </head>
 <body>
 
 <div class="card">
   <div class="ribbon">Friendship Day Special</div>
-  <h1>Happy Friendship Day, {FRIEND_NAME}! 🎉</h1>
+  <h1>Happy Friendship Day! 🎉</h1>
   <div class="emoji-row">👫 🤝 💛 🌈 🎊</div>
 
   <p class="msg">
-    Happy Friendship Day to one of the most important person in my life. No matter how busy life gets or how far apart we are, our friendship will always stay special. Thank you for every laugh, every conversation, and every memory. Here's to many more years of friendship.
+    Some people make life brighter simply by being a part of it, and you're one of them.
+    Thank you for every laugh, every conversation, every piece of advice, and every memory we've created together.
+    Your friendship means more than words can express.
   </p>
 
   <div class="quote">
-    "Having a friend like you is one of the greatest blessings in my life."
+    "Life becomes more beautiful when it is shared with genuine people."
   </div>
 
   <p class="msg">
-    Wishing you a Friendship Day filled with laughter, good memories, and the same warmth you always bring to my life.
+    I truly appreciate having you in my life. May this Friendship Day bring you happiness, peace, success, and many unforgettable moments.
+    Here's to many more memories, smiles, and years of friendship ahead. Stay happy and keep shining!
   </p>
 
-  <div class="signature">With love, {FRIEND_NAME.split()[0] if False else "Hithuu"} 💛</div>
+  <div class="signature">With love 💛</div>
 </div>
 
 <script>
-  function launchConfetti() {{
+  function launchConfetti() {
     const colors = ['#ff5f6d', '#ffc371', '#47cf73', '#4facfe', '#a44bf5', '#ff9a9e'];
-    const count = Math.min(50, Math.floor(window.innerWidth / 12)); // more on wider screens
-    for (let i = 0; i < count; i++) {{
+    const count = Math.min(50, Math.floor(window.innerWidth / 12));
+    for (let i = 0; i < count; i++) {
       const conf = document.createElement('div');
       conf.className = 'confetti';
       conf.style.left = Math.random() * 100 + 'vw';
@@ -183,17 +183,16 @@ html_code = f"""
       conf.style.width = conf.style.height = size + 'px';
       document.body.appendChild(conf);
       setTimeout(() => conf.remove(), 5000);
-    }}
-  }}
-  window.onload = () => {{
+    }
+  }
+  window.onload = () => {
     launchConfetti();
     setInterval(launchConfetti, 6000);
-  }};
+  };
 </script>
 
 </body>
 </html>
 """
 
-# Use a larger height and allow scrolling if needed (though content fits most screens)
 components.html(html_code, height=800, scrolling=True)
